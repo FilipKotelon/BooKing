@@ -1,0 +1,30 @@
+﻿html{
+  font-size: 62.5%;
+}
+
+body{
+  font-size: 1.6rem;
+  font-family: 'Montserrat', sans-serif;
+  color: $black;
+}
+
+a{
+  &, &:hover{
+    color: $red;     
+    text-decoration: none;
+  }
+}
+
+::selection{
+  background-color: $black-l;
+  color: $white;
+}
+
+.royal-font{
+  font-family: 'Pirata One', cursive;
+}
+
+.big-title{
+  font-size: 158px;
+  line-height: 187px;
+}

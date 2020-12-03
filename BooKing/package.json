@@ -1,0 +1,22 @@
+{
+  "name": "booking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass wwwroot/scss/main.scss wwwroot/css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FilipKotelon/BooKing.git"
+  },
+  "author": "Filip Kotelon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FilipKotelon/BooKing/issues"
+  },
+  "homepage": "https://github.com/FilipKotelon/BooKing#readme",
+  "devDependencies": {
+    "node-sass": "^4.5.3"
+  }
+}
