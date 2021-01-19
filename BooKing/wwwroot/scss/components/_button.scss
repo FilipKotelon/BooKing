@@ -1,2 +1,8 @@
-﻿body {
+﻿.btn{
+  @include d-flex($center: true);
+  border-radius: 3px;
+  height: 42px;
+  background: $black-l;
+  color: #FFF;
+  padding: 0 25px;
 }

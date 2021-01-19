@@ -24,7 +24,36 @@ a{
   font-family: 'Pirata One', cursive;
 }
 
-.big-title{
+.page-title{
   font-size: 158px;
   line-height: 187px;
+}
+
+.huge-title{
+  font-size: 48px;
+  line-height: 64px;
+}
+
+.big-title{
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.medium-title{
+  font-size: 22px;
+  line-height: 26px;
+  margin-bottom: 16px;
+}
+
+.small-title{
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.intact{
+  display: inline-block;
+}
+
+p, h1, h2, h3, h4, h5, h6{
+  margin-bottom: 1em;
 }

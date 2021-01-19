@@ -1,0 +1,24 @@
+.about-section{
+  @include d-flex($ai: center, $jc: space-between);
+  height: 100vh;
+  background: $gold-dimmed;
+  color: $white;
+
+  &__desc{
+    @include d-flex($dir: column, $ai: flex-start, $jc: center);
+    width: 40%;
+    height: 100%;
+    padding: 30px;
+  }
+
+  &__img-con{
+    width: 60%;
+    height: 100%;
+
+    & img{
+      @include img-cover;
+      filter: brightness(0.9);
+      transition: all 1s;
+    }
+  }
+}

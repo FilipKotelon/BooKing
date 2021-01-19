@@ -1,0 +1,89 @@
+.bk-nav{
+  &-con{
+    @include fix(0, 0);
+    width: 100%;
+    z-index: 2000;
+
+    &.fixed{
+      & .bk-nav{
+        &__logo, &__toggler-con{
+          background-color: $white;
+          border: 1px solid $gold;
+        }
+
+        &__toggler{
+          & span{
+            background-color: $gold;
+          }
+        }
+
+        &__logo{
+          & img{
+            filter: brightness(1) invert(0);
+          }
+        }
+      }
+    }
+  }
+
+  @include d-flex($jc: space-between, $ai: center);
+  height: 60px;
+  padding: 0 15px;
+
+  &__logo, &__toggler-con{
+    @include circle(50px);
+    background-color: transparent;
+    @include transition;
+  }
+
+  &__logo{
+    & img{
+      filter: brightness(0) invert(1);
+      @include transition;
+      height: 20px;
+    }
+  }
+
+  &__links{
+    @include d-flex;
+    @include m-not-last(18px, r);
+    
+    & a{
+      color: $white;
+      font-weight: 500;
+    }
+  }
+
+  &__toggler{
+    @include d-flex($center: true, $dir: column);
+    @include m-not-last(4px, b);
+    width: 32px;
+
+    & span{
+      @include rect(100%, 4px);
+      border-radius: 1px;
+      background-color: $white;
+      @include transition;
+    }
+  }
+
+  &__side-nav{
+    @include fix($r: -300px, $t: 0);
+    @include rect(255px, 100%);
+    @include d-flex($dir: column);
+    background-color: $white;
+    padding: 30px 15px;
+
+    &__links{
+      @include d-flex($dir: column, $ai: center);
+
+      & a{
+        color: $black;
+      }
+    }
+  }
+
+  &-height{
+    height: 60px;
+  }
+}

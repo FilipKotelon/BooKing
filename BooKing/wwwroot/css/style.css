@@ -7,7 +7,7 @@ html {
   margin: 0; }
 
 body {
-  background: #FCFFFC;
+  background: #FFF;
   overflow-x: hidden;
   position: relative; }
   @media (hover: none) {
@@ -28,14 +28,133 @@ a, a:hover {
 
 ::selection {
   background-color: #1C1C1C;
-  color: #FCFFFC; }
+  color: #FFF; }
 
 .royal-font {
   font-family: 'Pirata One', cursive; }
 
-.big-title {
+.page-title {
   font-size: 158px;
   line-height: 187px; }
+
+.huge-title {
+  font-size: 48px;
+  line-height: 64px; }
+
+.big-title {
+  font-size: 32px;
+  line-height: 40px; }
+
+.medium-title {
+  font-size: 22px;
+  line-height: 26px;
+  margin-bottom: 16px; }
+
+.small-title {
+  font-size: 18px;
+  line-height: 22px; }
+
+.intact {
+  display: inline-block; }
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1em; }
+
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  background: #dac34e;
+  color: #FFF; }
+  .about-section__desc {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    padding: 30px; }
+  .about-section__img-con {
+    width: 60%;
+    height: 100%; }
+    .about-section__img-con img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.9);
+      transition: all 1s; }
+
+.apartments-grid {
+  display: flex;
+  flex-wrap: wrap; }
+  .apartments-grid > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(100% / 3 - 2 / 3 * 30px);
+    margin-bottom: 30px; }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      .apartments-grid > * {
+        flex-basis: calc(33.33% - 2.2 * 30px); } }
+    @supports (-ms-ime-align: auto) {
+      .apartments-grid > * {
+        flex-basis: calc(33.33% - 2 / 3 * 30px); } }
+    .apartments-grid > *:not(:nth-child(3n)) {
+      margin-right: 30px; }
+  .apartments-grid__item {
+    display: flex;
+    flex-direction: column; }
+    .apartments-grid__item__img-con {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      position: relative;
+      height: 320px;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 8px; }
+      .apartments-grid__item__img-con:hover .apartments-grid__item__hover {
+        top: 80%; }
+    .apartments-grid__item__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0; }
+    .apartments-grid__item__title {
+      margin-bottom: 8px; }
+    .apartments-grid__item__hover {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 20%;
+      z-index: 0;
+      transition: all .3s;
+      background-color: #FFD700;
+      color: #000000;
+      font-weight: bold; }
+      .apartments-grid__item__hover:hover {
+        background-color: #000000;
+        color: #FFF; }
+    .apartments-grid__item__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+    .apartments-grid__item__info {
+      font-size: 14px;
+      line-height: 19px;
+      font-weight: 300; }
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px; }
 
 .hero-header {
   position: relative;
@@ -47,7 +166,9 @@ a, a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 0; }
+    z-index: 0;
+    animation: appear 1s .25s;
+    animation-fill-mode: backwards; }
   .hero-header__content {
     display: flex;
     align-items: center;
@@ -55,13 +176,14 @@ a, a:hover {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(10, 7, 0, 0.7);
     position: relative;
     z-index: 10;
-    color: #FCFFFC; }
-    .hero-header__content .big-title {
+    color: #FFF; }
+    .hero-header__content .page-title {
       animation: appear 1s .25s;
-      animation-fill-mode: backwards; }
+      animation-fill-mode: backwards;
+      margin-bottom: 0; }
   .hero-header__subtitle {
     font-size: 16px;
     font-weight: 300;
@@ -76,3 +198,79 @@ a, a:hover {
   100% {
     opacity: 1;
     transform: translateY(0); } }
+
+.bk-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 15px; }
+  .bk-nav-con {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2000; }
+    .bk-nav-con.fixed .bk-nav__logo, .bk-nav-con.fixed .bk-nav__toggler-con {
+      background-color: #FFF;
+      border: 1px solid #FFD700; }
+    .bk-nav-con.fixed .bk-nav__toggler span {
+      background-color: #FFD700; }
+    .bk-nav-con.fixed .bk-nav__logo img {
+      filter: brightness(1) invert(0); }
+  .bk-nav__logo, .bk-nav__toggler-con {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    transition: all .3s; }
+  .bk-nav__logo img {
+    filter: brightness(0) invert(1);
+    transition: all .3s;
+    height: 20px; }
+  .bk-nav__links {
+    display: flex; }
+    .bk-nav__links > :not(:last-child) {
+      margin-right: 18px; }
+    .bk-nav__links a {
+      color: #FFF;
+      font-weight: 500; }
+  .bk-nav__toggler {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 32px; }
+    .bk-nav__toggler > :not(:last-child) {
+      margin-bottom: 4px; }
+    .bk-nav__toggler span {
+      width: 100%;
+      height: 4px;
+      border-radius: 1px;
+      background-color: #FFF;
+      transition: all .3s; }
+  .bk-nav__side-nav {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 255px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    padding: 30px 15px; }
+    .bk-nav__side-nav__links {
+      display: flex;
+      align-items: center;
+      flex-direction: column; }
+      .bk-nav__side-nav__links a {
+        color: #000000; }
+  .bk-nav-height {
+    height: 60px; }
+
+.home-apartments {
+  margin-top: 60px;
+  margin-bottom: 60px; }

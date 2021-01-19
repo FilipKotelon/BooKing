@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass wwwroot/scss/main.scss wwwroot/css/style.css -w"
+    "compile:sass": "node-sass wwwroot/scss/main.scss wwwroot/css/style.css -w",
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,15 @@
   },
   "homepage": "https://github.com/FilipKotelon/BooKing#readme",
   "devDependencies": {
-    "node-sass": "^4.5.3"
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "node-sass": "^4.5.3",
+    "npm-watch": "^0.7.0",
+    "webpack": "^5.13.0",
+    "webpack-cli": "^4.3.1"
   }
 }

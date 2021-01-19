@@ -1,34 +1,37 @@
 ﻿.hero-header {
+  position: relative;
+  height: 100vh;
+
+  &__image {
+    @include abs(0, 0);
+    @include img-cover;
+    z-index: 0;
+    animation: appear 1s .25s;
+    animation-fill-mode: backwards;
+  }
+
+  &__content {
+    @include d-flex($center: true, $dir: column);
+    @include square(100%);
+    background: rgba(10, 7, 0, 0.7);
     position: relative;
-    height: 100vh;
+    z-index: 10;
+    color: $white;
 
-    &__image {
-        @include abs(0, 0);
-        @include img-cover;
-        z-index: 0;
+    & .page-title {
+      animation: appear 1s .25s;
+      animation-fill-mode: backwards;
+      margin-bottom: 0;
     }
+  }
 
-    &__content {
-        @include d-flex($center: true, $dir: column);
-        @include square(100%);
-        background: rgba(25, 21, 0, 0.7);
-        position: relative;
-        z-index: 10;
-        color: $white;
-
-        & .big-title {
-            animation: appear 1s .25s;
-            animation-fill-mode: backwards;
-        }
-    }
-
-    &__subtitle {
-        font-size: 16px;
-        font-weight: 300;
-        letter-spacing: 1px;
-        animation: appear 1s 1.5s;
-        animation-fill-mode: backwards;
-    }
+  &__subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    animation: appear 1s 1.5s;
+    animation-fill-mode: backwards;
+  }
 }
 
 @keyframes appear{
