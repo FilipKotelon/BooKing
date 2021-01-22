@@ -7,12 +7,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Pirata+One&display=swap" rel="stylesheet">
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
-    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/admin.css" />
 </head>
 <body>
-    <vc:nav />
-
-    @RenderBody()
+    <div class="admin-container">
+        <vc:admin-side-nav />
+        <div class="admin-body">
+            @RenderBody()
+        </div>
+    </div>
 
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@

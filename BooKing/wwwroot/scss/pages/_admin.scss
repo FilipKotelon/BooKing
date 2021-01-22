@@ -1,0 +1,19 @@
+.admin-container{
+  @include d-flex();
+}
+
+.admin-body{
+  width: calc(100% - 320px);
+  height: 100vh;
+  overflow: auto;
+  background-color: #f5f5f5;
+  padding: 30px;
+}
+
+.admin-title{
+  @include d-flex($ai: center);
+
+  & .dense-btn{
+    margin-left: 20px;
+  }
+}

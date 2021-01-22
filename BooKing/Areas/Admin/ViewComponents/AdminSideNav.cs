@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BooKing.Controllers
+namespace BooKing.Areas.Admin.ViewComponents
 {
-    [Area("Dashboard")]
-    public class DashboardController : Controller
+    public class AdminSideNav : ViewComponent
     {
-        public IActionResult Index()
+        public IViewComponentResult Invoke()
         {
             return View();
         }

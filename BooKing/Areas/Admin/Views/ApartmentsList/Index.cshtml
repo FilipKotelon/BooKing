@@ -1,0 +1,13 @@
+﻿@model List<ApartmentModel>
+
+<h1 class="admin-title">
+    <span>All Apartments</span>
+    <a class="dense-btn" asp-area="Admin" asp-controller="ApartmentSingle" asp-action="Add">Add new</a>
+</h1>
+
+<div class="admin-apartments-list">
+    @foreach(ApartmentModel apartment in Model)
+    {
+        <vc:admin-apartment-list-item apartment="@apartment" />
+    }
+</div>

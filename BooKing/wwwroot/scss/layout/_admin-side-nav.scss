@@ -1,0 +1,34 @@
+.admin-side-nav{
+  @include d-flex($dir: column);
+  width: 320px;
+  padding: 30px 15px;
+  text-align: center;
+
+  & a{
+    color: $black;
+  }
+
+  &__logo{
+    @include d-flex($dir: column, $ai: center);
+    margin-bottom: 30px;
+    font-size: 22px;
+
+    & img{
+      margin-bottom: 2px;
+    }
+  }
+
+  &__links{
+    @include d-flex($dir: column);
+    @include m-not-last(16px, b);
+    font-weight: bold;
+
+    & a{
+      @include transition;
+
+      &:hover{
+        color: $gold;
+      }
+    }
+  }
+}

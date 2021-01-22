@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BooKing.Entities
+namespace BooKing.Models
 {
-    public class ApartmentEntity
+    public class ApartmentAddModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string LocationName { get; set; }
         public string Description { get; set; }
         public int Sleeps { get; set; }
-        public string ImageIds { get; set; }
+        public List<IFormFile> Images { get; set; }
     }
 }

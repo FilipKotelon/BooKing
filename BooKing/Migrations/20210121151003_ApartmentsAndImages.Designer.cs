@@ -3,14 +3,16 @@ using BooKing.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BooKing.Migrations
 {
     [DbContext(typeof(BooKingDbContext))]
-    partial class BooKingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210121151003_ApartmentsAndImages")]
+    partial class ApartmentsAndImages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,21 +45,6 @@ namespace BooKing.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Apartments");
-                });
-
-            modelBuilder.Entity("BooKing.Entities.ImageEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("FileLocation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Images");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "compile:sass": "node-sass wwwroot/scss/main.scss wwwroot/css/style.css -w",
+    "compile-admin:sass": "node-sass wwwroot/scss/admin.scss wwwroot/css/admin.css -w",
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production"
   },
@@ -27,7 +28,9 @@
     "babel-preset-env": "^1.7.0",
     "node-sass": "^4.5.3",
     "npm-watch": "^0.7.0",
-    "webpack": "^5.13.0",
+    "sass": "^1.32.4",
+    "sass-loader": "^10.1.1",
+    "webpack": "^5.16.0",
     "webpack-cli": "^4.3.1"
   }
 }
