@@ -15,38 +15,36 @@ const editApartmentCtrl = () => {
   const imagesInput = document.getElementById('edit-images');
 
   const editApartment = async () => {
-    const formData = new FormData();
-
-    formData.append('Id', parseInt(idInput.value));
-    formData.append('Name', nameInput.value);
-    formData.append('Location', locationInput.value);
-    formData.append('Description', descriptionInput.value);
-    formData.append('Sleeps', parseInt(sleepsInput.value));
-
     let imageIds = imagesInput.value;
     imageIds = imageIds.length > 2 ? imageIds.slice(1, -1).split(',') : [];
+    imageIds = imageIds.map(imgId => parseInt(imgId));
 
-    imageIds.forEach(img => {
-      formData.append('Images', img);
-    })
+    const payload = {
+      Id: parseInt(idInput.value),
+      Name: nameInput.value,
+      LocationName: locationInput.value,
+      Description: descriptionInput.value,
+      Sleeps: parseInt(sleepsInput.value),
+      ImageIds: imageIds,
+    }
 
     $.ajax(
       {
         url: "/api/apartment/modify",
-        data: formData,
-        processData: false,
-        contentType: 'application/x-www-form-urlencoded',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(payload),
         type: "POST",
+
         success: (data) => {
           if(data.redirectUrl){
             window.location.pathname = data.redirectUrl;
           } else {
-            alert('An error has occured while adding the apartment!');
+            alert('An error has occured while editing the apartment!');
           }
         },
         error: (e) => {
           console.log(e);
-          alert('An error has occured while adding the apartment!');
+          alert('An error has occured while editing the apartment!');
         }
       }
     );

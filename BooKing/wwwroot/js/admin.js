@@ -40,19 +40,11 @@ var addApartmentCtrl = function addApartmentCtrl() {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              // const formData = new FormData();
-              // formData.append('Name', nameInput.value);
-              // formData.append('Location', locationInput.value);
-              // formData.append('Description', descriptionInput.value);
-              // formData.append('Sleeps', parseInt(sleepsInput.value));
               imageIds = imagesInput.value;
               imageIds = imageIds.length > 2 ? imageIds.slice(1, -1).split(',') : [];
               imageIds = imageIds.map(function (imgId) {
                 return parseInt(imgId);
-              }); // imageIds.forEach(img => {
-              //   formData.append('ImageIds', img);
-              // })
-
+              });
               payload = {
                 Name: nameInput.value,
                 LocationName: locationInput.value,
@@ -62,17 +54,8 @@ var addApartmentCtrl = function addApartmentCtrl() {
               };
               jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
                 url: "/api/apartment/create",
-                //data: formData,
-                //processData: false,
-                //contentType: false,
                 contentType: "application/json;charset=utf-8",
                 data: JSON.stringify(payload),
-                //processData: false,
-                // headers: {
-                //   'Accept': 'application/json',
-                //   'Content-Type': 'application/json'
-                // },
-                // dataType: "json",
                 type: "POST",
                 success: function success(data) {
                   if (data.redirectUrl) {
@@ -145,42 +128,43 @@ var editApartmentCtrl = function editApartmentCtrl() {
 
   var editApartment = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var formData, imageIds;
+      var imageIds, payload;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              formData = new FormData();
-              formData.append('Id', parseInt(idInput.value));
-              formData.append('Name', nameInput.value);
-              formData.append('Location', locationInput.value);
-              formData.append('Description', descriptionInput.value);
-              formData.append('Sleeps', parseInt(sleepsInput.value));
               imageIds = imagesInput.value;
               imageIds = imageIds.length > 2 ? imageIds.slice(1, -1).split(',') : [];
-              imageIds.forEach(function (img) {
-                formData.append('Images', img);
+              imageIds = imageIds.map(function (imgId) {
+                return parseInt(imgId);
               });
+              payload = {
+                Id: parseInt(idInput.value),
+                Name: nameInput.value,
+                LocationName: locationInput.value,
+                Description: descriptionInput.value,
+                Sleeps: parseInt(sleepsInput.value),
+                ImageIds: imageIds
+              };
               jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
                 url: "/api/apartment/modify",
-                data: formData,
-                processData: false,
-                contentType: 'application/x-www-form-urlencoded',
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify(payload),
                 type: "POST",
                 success: function success(data) {
                   if (data.redirectUrl) {
                     window.location.pathname = data.redirectUrl;
                   } else {
-                    alert('An error has occured while adding the apartment!');
+                    alert('An error has occured while editing the apartment!');
                   }
                 },
                 error: function error(e) {
                   console.log(e);
-                  alert('An error has occured while adding the apartment!');
+                  alert('An error has occured while editing the apartment!');
                 }
               });
 
-            case 10:
+            case 5:
             case "end":
               return _context.stop();
           }

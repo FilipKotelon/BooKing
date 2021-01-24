@@ -14,20 +14,9 @@ const addApartmentCtrl = () => {
   const imagesInput = document.getElementById('add-images');
 
   const addApartment = async () => {
-    // const formData = new FormData();
-
-    // formData.append('Name', nameInput.value);
-    // formData.append('Location', locationInput.value);
-    // formData.append('Description', descriptionInput.value);
-    // formData.append('Sleeps', parseInt(sleepsInput.value));
-
     let imageIds = imagesInput.value;
     imageIds = imageIds.length > 2 ? imageIds.slice(1, -1).split(',') : [];
     imageIds = imageIds.map(imgId => parseInt(imgId));
-
-    // imageIds.forEach(img => {
-    //   formData.append('ImageIds', img);
-    // })
 
     const payload = {
       Name: nameInput.value,
@@ -40,17 +29,8 @@ const addApartmentCtrl = () => {
     $.ajax(
       {
         url: "/api/apartment/create",
-        //data: formData,
-        //processData: false,
-        //contentType: false,
         contentType: "application/json;charset=utf-8",
         data: JSON.stringify(payload),
-        //processData: false,
-        // headers: {
-        //   'Accept': 'application/json',
-        //   'Content-Type': 'application/json'
-        // },
-        // dataType: "json",
         type: "POST",
 
         success: (data) => {
