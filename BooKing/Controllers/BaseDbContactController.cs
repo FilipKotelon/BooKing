@@ -43,5 +43,27 @@ namespace BooKing.Controllers
                 Images = imageModelsList
             };
         }
+
+        protected ApartmentSaveModel ApartmentEntityToSaveModel(ApartmentEntity entity)
+        {
+            var imagesIdList = JsonConvert.DeserializeObject<List<int>>(entity.ImageIds);
+            string mainImagePath = null;
+
+            if(imagesIdList.Count > 0 && imagesIdList != null)
+            {
+                mainImagePath = _dbContext.Images.First(img => img.Id == imagesIdList[0]).FileLocation;
+            }
+
+            return new ApartmentSaveModel
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Description = entity.Description,
+                LocationName = entity.LocationName,
+                Sleeps = entity.Sleeps,
+                ImageIds = imagesIdList,
+                MainImagePath = mainImagePath
+            };
+        }
     }
 }

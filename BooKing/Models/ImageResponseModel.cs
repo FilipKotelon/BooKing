@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace BooKing.Models
 {
-    public class ImageModel
+    public class ImageResponseModel
     {
-        public int Id { get; set; }
-        public string FileLocation { get; set; }
+        public List<ImageModel> Images { get; set; }
+        public string Message { get; set; }
     }
 }

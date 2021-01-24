@@ -31,9 +31,15 @@ namespace BooKing.Areas.Admin.Controllers
             return View("Index", apartmentsList);
         }
 
-        public IActionResult RemoveAndRedirectToList()
+        public IActionResult RemoveAndRedirectToList(int apartmentId)
         {
-            int apartmentId = 0;
+            var apartmentToRemove = _dbContext.Apartments.First(apartment => apartment.Id == apartmentId);
+
+            if (apartmentToRemove != null)
+            {
+                _dbContext.Apartments.Remove(apartmentToRemove);
+                _dbContext.SaveChanges();
+            }
 
             return RedirectToAction("Index");
         }

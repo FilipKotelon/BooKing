@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace BooKing.Models
 {
-    public class ImageModel
+    public class ApartmentApiResponseModel
     {
-        public int Id { get; set; }
-        public string FileLocation { get; set; }
+        public string RedirectUrl { get; set; }
     }
 }

@@ -1,9 +1,9 @@
-﻿@model ApartmentAddModel
+﻿@model ApartmentSaveModel
 
-<form enctype="multipart/form-data" asp-controller="ApartmentSingle" asp-action="CreateAndRedirectToEdit" method="POST" class="admin-apartment-form">
+<form enctype="multipart/form-data" method="POST" class="add-apartment-form" id="add-apartment-form">
 
     <h1 class="admin-title">
-        <input class="admin-title-input" asp-for="Name" placeholder="Apartment name" />
+        <input class="admin-title-input" asp-for="Name" placeholder="Apartment name" id="add-name" />
     </h1>
 
     <div class="form-group">
@@ -22,8 +22,9 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Images">Amount of sleeps</label>
-        <input asp-for="Images" class="form-control" id="add-images" placeholder="Choose files" />
+        <label asp-for="ImageIds">Upload images</label>
+        <input asp-for="ImageIds" id="add-images" type="hidden" />
+        <vc:admin-image-modal-opener />
     </div>
 
     <div class="form-group">
@@ -31,3 +32,5 @@
     </div>
 
 </form>
+
+<vc:admin-image-modal input-id="add-images" apartment-image-ids="@new List<int>()" />

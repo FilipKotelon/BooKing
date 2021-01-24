@@ -1,30 +1,32 @@
-﻿@model ApartmentModel
+﻿@model ApartmentSaveModel
 
-<form asp-controller="ApartmentSingle" asp-action="ModifyAndRedirectToEdit" method="POST" class="admin-apartment-form">
+<form enctype="multipart/form-data" method="POST" class="admin-apartment-form" id="edit-apartment-form">
 
     <h1 class="admin-title">
-        @Model.Name
-        <input class="admin-title-input" asp-for="Name" placeholder="Apartment name" />
+        <input class="admin-title-input" asp-for="Name" placeholder="Apartment name" id="edit-name" />
     </h1>
+
+    <input asp-for="Id" type="hidden" id="edit-id" />
 
     <div class="form-group">
         <label asp-for="LocationName">Location</label>
-        <input asp-for="LocationName" class="form-control" id="add-location" placeholder="Apartment location" />
+        <input asp-for="LocationName" class="form-control" id="edit-location" placeholder="Apartment location" />
     </div>
 
     <div class="form-group">
         <label asp-for="Description">Description</label>
-        <textarea asp-for="Description" class="form-control" id="add-description" placeholder="Apartment description"></textarea>
+        <textarea asp-for="Description" class="form-control" id="edit-description" placeholder="Apartment description"></textarea>
     </div>
 
     <div class="form-group">
         <label asp-for="Sleeps">Amount of sleeps</label>
-        <input asp-for="Sleeps" class="form-control" id="add-sleeps" placeholder="Apartment sleeps" />
+        <input asp-for="Sleeps" class="form-control" id="edit-sleeps" placeholder="Apartment sleeps" />
     </div>
 
     <div class="form-group">
-        <label asp-for="Images">Amount of sleeps</label>
-        <input asp-for="Images" class="form-control" id="add-images" placeholder="Choose files" />
+        <label asp-for="ImageIds">Upload images</label>
+        <input asp-for="ImageIds" id="edit-images" type="hidden" />
+        <vc:admin-image-modal-opener />
     </div>
 
     <div class="form-group">
@@ -32,3 +34,5 @@
     </div>
 
 </form>
+
+<vc:admin-image-modal input-id="add-images" apartment-image-ids="@Model.ImageIds" />

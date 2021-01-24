@@ -2,18 +2,16 @@
 
 <div class="admin-apartment-list-item">
     <div class="admin-apartment-list-item__img-con">
-        @if (Model.Images.Count > 0)
+        @if (Model.Images != null && Model.Images.Count > 0)
         {
             string imgPath = "~/uploads/" + Model.Images[0].FileLocation;
 
             <img class="admin-apartment-list-item__img" src="@imgPath" asp-append-version="true" />
         }
-        <div class="admin-apartment-list-item__img-overlay">
-            <a asp-area="Admin" asp-controller="ApartmentSingle" asp-action="Edit" asp-route-id="@Model.Id" class="admin-apartment-list-item__img-overlay__option--edit">
-                Edit
-            </a>
-            @Html.ActionLink("Remove", "RemoveAndRedirectToList", "ApartmentsList", new { apartmentId = Model.Id }, new { @class = "admin-apartment-list-item__img-overlay__option--edit" });
-        </div>
+    <div class="admin-apartment-list-item__img-overlay">
+        @Html.ActionLink("Edit", "Edit", "ApartmentSingle", new { id = Model.Id }, new { @class = "admin-apartment-list-item__img-overlay__option--edit" });
+        @Html.ActionLink("Remove", "RemoveAndRedirectToList", "ApartmentsList", new { apartmentId = Model.Id }, new { @class = "admin-apartment-list-item__img-overlay__option--delete" });
+    </div>
     </div>
     <h3 class="admin-apartment-list-item__title">@Model.Name</h3>
 </div>
