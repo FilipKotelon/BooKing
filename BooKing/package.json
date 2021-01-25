@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "slick-carousel": "^1.8.1"
   }
 }

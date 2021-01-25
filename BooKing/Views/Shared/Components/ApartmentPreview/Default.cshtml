@@ -1,19 +1,25 @@
-﻿<div class="apartments-grid__item">
-    <a asp-area="" asp-controller="Apartment" asp-action="Index" class="apartments-grid__item__img-con">
-        <img src="~/img/components/header-2.jpg" alt="Apartament" class="apartments-grid__item__img" />
-        <div class="apartments-grid__item__hover">
-            <span>View</span>
+﻿@model ApartmentModel 
+
+<div class="apartments-grid__item">
+    <a href="@Url.Action("Index", "Apartment", new { id = Model.Id })" class="apartments-grid__item__img-con">
+        @if (Model.Images != null && Model.Images.Count > 0)
+        {
+            string imgPath = "~/uploads/" + Model.Images[0].FileLocation;
+
+            <img src="@imgPath" alt="@Model.Name" class="apartments-grid__item__img" asp-append-version="true" />
+        }
+        <div class="apartments-grid__item__info">
+            <h3 class="apartments-grid__item__title small-title">
+                @Model.Name
+            </h3>
+            <div class="apartments-grid__item__footer">
+                <div class="apartments-grid__item__info">
+                    @Model.LocationName
+                </div>
+                <div class="apartments-grid__item__info">
+                    Sleeps: @Model.Sleeps
+                </div>
+            </div>
         </div>
     </a>
-    <h3 class="apartments-grid__item__title small-title">
-        Apartment
-    </h3>
-    <div class="apartments-grid__item__footer">
-        <div class="apartments-grid__item__info">
-            Kraków, ul. Wielicka 19
-        </div>
-        <div class="apartments-grid__item__info">
-            Sleeps: 4
-        </div>
-    </div>
 </div>

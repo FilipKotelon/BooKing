@@ -1,13 +1,18 @@
-﻿@{
-    ViewData["Title"] = "Apartment - BooKing";
+﻿@model ApartmentModel 
+@{
+    ViewData["Title"] = Model.Name + " - BooKing";
 }
 
 <main>
     <header class="hero-header">
-        <img src="~/img/components/header-2.jpg" alt="Booking Header" class="hero-header__image" />
+        @if (Model.Images != null && Model.Images.Count > 0)
+        {
+            string imgPath = "~/uploads/" + Model.Images[0].FileLocation;
+
+            <img src="@imgPath" alt="@Model.Name" class="hero-header__image" asp-append-version="true" />
+        }
         <div class="hero-header__content">
-            <h1 class="page-title royal-font">Apartment Page</h1>
-            <h2 class="hero-header__subtitle">You've entered the placeholder page for an apartment.</h2>
+            <h1 class="page-title royal-font">@Model.Name</h1>
         </div>
     </header>
 </main>

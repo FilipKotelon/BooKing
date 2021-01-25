@@ -1,4 +1,5 @@
-﻿using BooKing.Models;
+﻿using BooKing.Database;
+using BooKing.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,18 +10,21 @@ using System.Threading.Tasks;
 
 namespace BooKing.Controllers
 {
-    public class ApartmentController : Controller
+    public class ApartmentController : BaseDbContactController
     {
         private readonly ILogger<ApartmentController> _logger;
 
-        public ApartmentController(ILogger<ApartmentController> logger)
+        public ApartmentController(BooKingDbContext dbContext, ILogger<ApartmentController> logger) : base(dbContext)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            return View();
+            var apartmentEntity = _dbContext.Apartments.First(apartment => apartment.Id == id);
+            var apartment = ApartmentEntityToModel(apartmentEntity);
+
+            return View(apartment);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
