@@ -1,0 +1,32 @@
+﻿@model int
+
+<form class="contact-form" method="POST" id="contact-form">
+    <div class="contact-form__loading" id="contacct-form-loading">
+        <div class="contact-form__loading__status loading" id="contact-form-loading-status">
+
+        </div>
+        <div class="contact-form__loading__msg" id="contact-form-loading-msg">
+            Please wait, we are processing your message...
+        </div>
+    </div>
+
+    <h3>Are you interested in booking this apartment? Contact us!</h3>
+
+    <div class="contact-form__group">
+        <input type="text" placeholder="Your name" id="contact-name" required />
+    </div>
+
+    <div class="contact-form__group">
+        <input type="email" placeholder="Your e-mail address" id="contact-email" required />
+    </div>
+
+    <div class="contact-form__group">
+        <textarea placeholder="Your message" id="contact-msg" required ></textarea>
+    </div>
+
+    <input type="hidden" value="@Model" id="contact-id" />
+
+    <button type="submit" class="contact-form__submit dense-btn">
+        Send
+    </button>
+</form>

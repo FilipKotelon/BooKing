@@ -16,6 +16,7 @@ namespace BooKing.Database
 
         public DbSet<ApartmentEntity> Apartments { get; set; }
         public DbSet<ImageEntity> Images { get; set; }
+        public DbSet<UserMessageEntity> UserMessages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

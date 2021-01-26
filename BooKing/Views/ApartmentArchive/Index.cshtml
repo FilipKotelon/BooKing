@@ -1,0 +1,12 @@
+﻿@model List<ApartmentModel>
+
+<header class="page-header">
+    <h1 class="page-title royal-font">Apartments</h1>
+</header>
+
+<div class="apartments-grid">
+    @foreach (ApartmentModel apartment in Model)
+    {
+        <vc:apartment-preview apartment="@apartment" />
+    }
+</div>

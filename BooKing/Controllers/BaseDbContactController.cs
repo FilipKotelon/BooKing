@@ -65,5 +65,13 @@ namespace BooKing.Controllers
                 MainImagePath = mainImagePath
             };
         }
+
+        protected UserMessageAdminDisplayModel UserMessageEntityToAdminDisplayModel(UserMessageEntity entity)
+        {
+            return new UserMessageAdminDisplayModel
+            {
+
+            }
+        }
     }
 }

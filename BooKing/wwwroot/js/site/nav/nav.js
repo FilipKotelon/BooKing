@@ -1,5 +1,5 @@
-import navOpen from "./nav-open";
-import navScroll from "./nav-scroll";
+import navOpen from "./navOpen";
+import navScroll from "./navScroll";
 
 const nav = () => {
   navOpen();

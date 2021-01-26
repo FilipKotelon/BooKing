@@ -15,6 +15,34 @@
             <h1 class="page-title royal-font">@Model.Name</h1>
         </div>
     </header>
+
+    <div class="apartment-content">
+        <div class="apartment-content__info">
+            <div class="apartment-content__info__location">
+                @Model.LocationName
+            </div>
+            <div class="apartment-content__info__sleeps">
+                Amount of sleeps: @Model.Sleeps
+            </div>
+        </div>
+        <div class="apartment-content__desc">
+            @Model.Description
+        </div>
+
+        @if (Model.Images != null && Model.Images.Count > 0)
+        {
+            <div class="apartment-content__gallery">
+
+            </div>
+        } else
+        {
+            <div class="apartment-content__gallery-msg">
+                No images added for this apartment yet. Contact us to get information about it!
+            </div>
+        }
+    </div>
+
+    <vc:apartment-contact-form apartment-id="@Model.Id" />
 </main>
 
 <div class="separator"></div>

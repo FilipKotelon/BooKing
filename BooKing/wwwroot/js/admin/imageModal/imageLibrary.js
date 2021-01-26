@@ -13,6 +13,8 @@ const imageLibrary = () => {
     adminImageModalEl.dataset.imageIds.slice(1, -1).split(',') :
     [];
 
+  boundInput.value = `[${apartmentImageIds.join(',')}]`;
+
   const imgEventListener = (img, imgObj) => {
     if(img.classList.contains('checked')){
   

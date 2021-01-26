@@ -58,6 +58,9 @@
     @include d-flex($center: true, $dir: column);
     @include m-not-last(4px, b);
     width: 32px;
+    cursor: pointer;
+    position: relative;
+    z-index: 10000;
 
     & span{
       @include rect(100%, 4px);
@@ -73,6 +76,13 @@
     @include d-flex($dir: column);
     background-color: $white;
     padding: 30px 15px;
+    @include transition;
+    z-index: 5000;
+    box-shadow: 4px 0px 12px rgba(0, 0, 0, 0.18);
+
+    &.open{
+      right: 0;
+    }
 
     &__links{
       @include d-flex($dir: column, $ai: center);

@@ -1,6 +1,5 @@
 const navScroll = () => {
   const nav = document.getElementById('nav');
-  console.log('hello');
 
   if(!nav) return;
 

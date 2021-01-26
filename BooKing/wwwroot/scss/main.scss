@@ -1,4 +1,7 @@
-﻿@import "./utility/variables";
+﻿@import "node_modules/slick-carousel/slick/slick.scss";
+@import "node_modules/slick-carousel/slick/slick-theme.scss";
+
+@import "./utility/variables";
 @import "./utility/mixins/mixins-basic";
 @import "./utility/mixins/mixins-flex";
 @import "./utility/mixins/mixins-other";
