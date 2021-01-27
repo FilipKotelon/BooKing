@@ -1,0 +1,19 @@
+﻿@model UserMessageAdminDisplayModel
+
+<div class="single-message">
+    <h1>Message from @Model.Name</h1>
+    <h2>User email: @Model.Email</h2>
+    <div class="single-message__msg">
+        <h3>Message:</h3>
+        <p>
+            @Model.Message
+        </p>
+    </div>
+    @if(Model.ApartmentTitle != null)
+    {
+        <div class="single-message__apartment">
+            <p>Apartment: @Model.ApartmentTitle</p>
+            <a href="@Url.Action("Index", "Apartment", new { Area = "", id = Model.ApartmentId })">View apartment</a>
+        </div>
+    }
+</div>

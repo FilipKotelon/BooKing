@@ -1,0 +1,21 @@
+﻿@model List<UserMessageAdminDisplayModel>
+
+<h1 class="admin-title">Messages from users</h1>
+
+<div class="user-messages-grid">
+
+    @foreach(UserMessageAdminDisplayModel msg in Model)
+    {
+        <a href="@Url.Action("Index", "UserMessageSingle", new { id = msg.Id })" class="user-message-preview">
+            <h2>From: @msg.Name</h2>
+            <h3>Email: @msg.Email</h3>
+            @if (msg.ApartmentTitle != null)
+            {
+                <div class="user-message-preview__apartment">
+                    Apartment: @msg.ApartmentTitle
+                </div>
+            }
+        </a>
+    }
+
+</div>

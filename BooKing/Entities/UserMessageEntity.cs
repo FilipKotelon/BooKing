@@ -12,5 +12,6 @@ namespace BooKing.Entities
         public string Email { get; set; }
         public string Message { get; set; }
         public int ApartmentId { get; set; }
+        public DateTime DateSent { get; set; }
     }
 }

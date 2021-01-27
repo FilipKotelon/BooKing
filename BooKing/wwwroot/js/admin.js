@@ -340,7 +340,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var adminImageModalEl = document.getElementById('admin-image-modal');
 var adminImageModalCloser = document.getElementById('admin-image-modal-closer');
-var boundInput = document.getElementById(adminImageModalEl.dataset["for"]);
+var boundInput = null;
+
+if (adminImageModalEl) {
+  boundInput = document.getElementById(adminImageModalEl.dataset["for"]);
+}
 
 var imageModal = function imageModal() {
   if (!adminImageModalEl) return;

@@ -26,7 +26,8 @@ namespace BooKing.Controllers
                 Name = userMessage.Name,
                 Email = userMessage.Email,
                 Message = userMessage.Message,
-                ApartmentId = userMessage.ApartmentId
+                ApartmentId = userMessage.ApartmentId,
+                DateSent = DateTime.Now
             };
 
             _dbContext.UserMessages.Add(entity);
@@ -34,7 +35,7 @@ namespace BooKing.Controllers
 
             return new ApartmentContactResponseModel
             {
-                Message = "We received your message and will respond with the next 24 hours!"
+                Message = "We received your message and will respond within the next 24 hours!"
             };
         }
     }

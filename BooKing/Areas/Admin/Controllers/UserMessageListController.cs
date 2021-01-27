@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 namespace BooKing.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ApartmentMessageListController : BaseDbContactController
+    public class UserMessageListController : BaseDbContactController
     {
 
-        public ApartmentMessageListController(BooKingDbContext dbContext) : base(dbContext)
+        public UserMessageListController(BooKingDbContext dbContext) : base(dbContext)
         {
 
         }
@@ -29,7 +29,7 @@ namespace BooKing.Areas.Admin.Controllers
                 userMessages.Add(UserMessageEntityToAdminDisplayModel(entity));
             }
 
-            return View();
+            return View(userMessages);
         }
     }
 }

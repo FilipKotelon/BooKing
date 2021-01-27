@@ -68,10 +68,30 @@ namespace BooKing.Controllers
 
         protected UserMessageAdminDisplayModel UserMessageEntityToAdminDisplayModel(UserMessageEntity entity)
         {
-            return new UserMessageAdminDisplayModel
-            {
+            var apartment = _dbContext.Apartments.First(a => a.Id == entity.ApartmentId);
 
+            if (apartment != null)
+            {
+                return new UserMessageAdminDisplayModel
+                {
+                    Id = entity.Id,
+                    Name = entity.Name,
+                    Email = entity.Email,
+                    Message = entity.Message,
+                    ApartmentTitle = apartment.Name,
+                    ApartmentId = entity.ApartmentId
+                };
+            } else
+            {
+                return new UserMessageAdminDisplayModel
+                {
+                    Id = entity.Id,
+                    Name = entity.Name,
+                    Email = entity.Email,
+                    Message = entity.Message
+                };
             }
+
         }
     }
 }
