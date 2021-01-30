@@ -2,7 +2,6 @@
   @include d-flex($dir: column);
   background-color: $white;
   padding: 20px 30px;
-  border-radius: 3px;
   position: relative;
   color: $black;
   width: 540px;
@@ -35,31 +34,5 @@
   & .dense-btn{
     height: 42px;
     font-size: 16px;
-  }
-
-  &__loading{
-    @include abs(0, 0);
-    @include square(100%);
-    @include d-flex($dir: column, $center: true);
-    background-color: $gold-dimmed;
-    color: $white;
-    z-index: 1;
-    font-weight: bold;
-    border-radius: 3px;
-    opacity: 0;
-    pointer-events: none;
-
-    &.open{
-      opacity: 1;
-      pointer-events: 1;
-    }
-
-    &.wrong{
-      background-color: $red-dimmed;
-    }
-
-    &.correct{
-      background-color: $green;
-    }
   }
 }

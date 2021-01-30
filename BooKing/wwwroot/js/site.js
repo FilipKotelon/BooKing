@@ -27,9 +27,8 @@ var contactForm = function contactForm() {
   var emailInput = document.getElementById('contact-email');
   var msgInput = document.getElementById('contact-msg');
   var idInput = document.getElementById('contact-id');
-  var loadingScreen = document.getElementById('contact-form-loading-msg');
+  var loadingScreen = document.getElementById('contact-form-loading');
   var msg = document.getElementById('contact-form-loading-msg');
-  var status = document.getElementById('contact-form-loading-status');
 
   var contact = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -52,16 +51,15 @@ var contactForm = function contactForm() {
                 type: "POST",
                 success: function success(data) {
                   msg.innerText = data.message;
-                  status.classList.remove('loading');
-                  status.classList.remove('failed');
-                  status.classList.add('success');
+                  loadingScreen.classList.remove('loading');
+                  loadingScreen.classList.remove('failed');
+                  loadingScreen.classList.add('success');
                 },
                 error: function error(e) {
-                  console.log(e);
-                  msg.innerText = 'An error has occured while sending the message! Please try again later or contact us by phone.';
-                  status.classList.remove('loading');
-                  status.classList.remove('success');
-                  status.classList.add('failed');
+                  msg.innerText = 'An error has occured while sending the message! Please try again later or contact us by phone: +48 000 111 222.';
+                  loadingScreen.classList.remove('loading');
+                  loadingScreen.classList.remove('success');
+                  loadingScreen.classList.add('failed');
                 }
               });
 

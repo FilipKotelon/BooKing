@@ -45,6 +45,7 @@
 
   &__gallery{
     @include flex-row-3(8px);
+    justify-content: center;
     max-width: 1200px;
     margin-bottom: 60px;
 

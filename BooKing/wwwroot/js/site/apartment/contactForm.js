@@ -10,12 +10,11 @@ const contactForm = () => {
   const msgInput = document.getElementById('contact-msg');
   const idInput = document.getElementById('contact-id');
 
-  const loadingScreen = document.getElementById('contact-form-loading-msg');
+  const loadingScreen = document.getElementById('contact-form-loading');
   const msg = document.getElementById('contact-form-loading-msg');
-  const status = document.getElementById('contact-form-loading-status');
 
   const contact = async () => {
-    loadingScreen.classList.add('open')
+    loadingScreen.classList.add('open');
 
     const payload = {
       Name: nameInput.value,
@@ -34,17 +33,16 @@ const contactForm = () => {
         success: (data) => {
           msg.innerText = data.message;
 
-          status.classList.remove('loading');
-          status.classList.remove('failed');
-          status.classList.add('success');
+          loadingScreen.classList.remove('loading');
+          loadingScreen.classList.remove('failed');
+          loadingScreen.classList.add('success');
         },
         error: (e) => {
-          console.log(e);
-          msg.innerText = 'An error has occured while sending the message! Please try again later or contact us by phone.';
+          msg.innerText = 'An error has occured while sending the message! Please try again later or contact us by phone: +48 000 111 222.';
 
-          status.classList.remove('loading');
-          status.classList.remove('success');
-          status.classList.add('failed');
+          loadingScreen.classList.remove('loading');
+          loadingScreen.classList.remove('success');
+          loadingScreen.classList.add('failed');
         }
       }
     );

@@ -1,0 +1,33 @@
+.loading-modal{
+  @include abs(0, 0);
+  @include square(100%);
+  @include d-flex($dir: column, $center: true);
+  background-color: $gold-dimmed;
+  color: $white;
+  z-index: 1;
+  font-weight: bold;
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  padding: 30px;
+  text-align: center;
+  @include transition;
+
+  &.open{
+    opacity: 1;
+    pointer-events: 1;
+  }
+
+  &.failed{
+    background-color: $red-dimmed;
+  }
+
+  &.success{
+    background-color: $green;
+  }
+
+  &-con{
+    position: relative;
+    border-radius: 3px;
+  }
+}
