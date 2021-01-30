@@ -1,0 +1,23 @@
+.user-messages-grid{
+  @include flex-row-3(30px);
+}
+
+.user-message-preview{
+  @include d-flex($dir: column);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 3px 18px rgba(0, 0, 0, 0.18);
+  position: relative;
+  bottom: 0;
+  @include transition;
+  background-color: $white;
+
+  &, &:hover{
+    color: $black;
+  }
+
+  &:hover{
+    bottom: 9px;
+    box-shadow: 0px 5px 21px rgba(0, 0, 0, 0.25);
+  }
+}

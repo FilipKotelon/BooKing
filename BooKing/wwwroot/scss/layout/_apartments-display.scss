@@ -1,8 +1,9 @@
-﻿.home-apartments{
+.apartments-display{
   background-color: $red-dimmed;
   color: #FFF;
 
-  &__head{
+  &__head, &__footer{
+    @include d-flex($jc: center);
     padding: 30px;
     text-align: center;
 
@@ -23,6 +24,17 @@
 
       &__img-con{
         height: 500px;
+      }
+    }
+  }
+
+  &__grid{
+    padding: 0 8px;
+    @include flex-row-3(8px);
+
+    & .apartments-grid__item{
+      &__img-con{
+        height: 420px;
       }
     }
   }

@@ -27,18 +27,18 @@
         </div>
     </section>
 
-    <section class="home-apartments">
-        <div class="home-apartments__head">
+    <section class="apartments-display">
+        <div class="apartments-display__head">
             <h2 class="huge-title">Check out our apartments</h2>
         </div>
-        <div class="home-apartments__carousel" id="apartments-carousel">
+        <div class="apartments-display__carousel" id="apartments-carousel">
             @foreach (ApartmentModel apartment in Model)
             {
                 <vc:apartment-preview apartment="@apartment" />
             }
         </div>
-        <div class="home-apartments__footer">
-            <a asp-controller="ApartmentArchive" asp-action="Index" class="bk-btn">See all</a>
+        <div class="apartments-display__footer">
+            <a asp-controller="ApartmentArchive" asp-action="Index" class="btn--white">See all</a>
         </div>
     </section>
 </main>

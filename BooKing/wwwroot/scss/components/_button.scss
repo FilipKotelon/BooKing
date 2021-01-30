@@ -1,4 +1,4 @@
-﻿.btn, .dense-btn{
+﻿.btn, .dense-btn, .btn--white{
   @include d-flex($center: true);
   border-radius: 3px;
   background: $black-l;
@@ -6,14 +6,17 @@
   border: 1px solid $black-l;
   @include transition;
   cursor: pointer;
+  font-weight: 500;
+}
 
+.btn, .dense-btn{
   &:hover{
     background-color: #FFF;
     color: $black-l;
   }
 }
 
-.btn{
+.btn, .btn--white{
   height: 42px;
   padding: 0 25px;
   font-size: 16px;
@@ -23,4 +26,9 @@
   height: 36px;
   padding: 0 12px;
   font-size: 14px;
+}
+
+.btn--white{
+  background-color: #FFF;
+  color: $black-l;
 }

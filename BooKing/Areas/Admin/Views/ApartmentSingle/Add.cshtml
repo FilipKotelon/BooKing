@@ -1,28 +1,24 @@
 ﻿@model ApartmentSaveModel
 
-<form enctype="multipart/form-data" method="POST" class="add-apartment-form" id="add-apartment-form">
+<form enctype="multipart/form-data" method="POST" class="admin-apartment-form" id="add-apartment-form">
 
     <h1 class="admin-title">
         <input class="admin-title-input" asp-for="Name" placeholder="Apartment name" id="add-name" required />
     </h1>
 
     <div class="form-group">
-        <label asp-for="LocationName">Location</label>
         <input asp-for="LocationName" class="form-control" id="add-location" placeholder="Apartment location" required />
     </div>
 
     <div class="form-group">
-        <label asp-for="Description">Description</label>
         <textarea asp-for="Description" class="form-control" id="add-description" placeholder="Apartment description" required ></textarea>
     </div>
 
     <div class="form-group">
-        <label asp-for="Sleeps">Amount of sleeps</label>
-        <input asp-for="Sleeps" class="form-control" id="add-sleeps" placeholder="Apartment sleeps" required />
+        <input asp-for="Sleeps" class="form-control" id="add-sleeps" placeholder="Amount of apartment sleeps" required />
     </div>
 
     <div class="form-group">
-        <label asp-for="ImageIds">Upload images</label>
         <input asp-for="ImageIds" id="add-images" type="hidden" />
         <vc:admin-image-modal-opener />
     </div>

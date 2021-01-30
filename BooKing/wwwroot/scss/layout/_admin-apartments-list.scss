@@ -1,0 +1,41 @@
+.admin-apartments-list{
+  @include flex-row-3(30px);
+
+  &-item{
+    &__img{
+      &-con{
+        height: 360px;
+        position: relative;
+        cursor: pointer;
+        margin-bottom: 6px;
+
+        &:hover{
+          & .admin-apartments-list-item__img-overlay{
+            opacity: 1;
+          }
+        }
+  
+        & img{
+          @include img-cover;
+        }
+      }
+
+      &-overlay{
+        @include d-flex($center: true);
+        @include square(100%);
+        @include abs(0, 0);
+        z-index: 1;
+        color: $white;
+        opacity: 0;
+        background: rgba(0, 0, 0, 0.7);
+        @include transition;
+
+        @include m-not-last(40px, r);
+        
+        & a{
+          color: $white;
+        }
+      }
+    }
+  }
+}
