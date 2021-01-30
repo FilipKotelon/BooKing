@@ -1,0 +1,80 @@
+.single-apartment-con{
+  @include rect(100%, 100vh);
+  position: relative;
+  overflow: hidden;
+}
+
+.single-apartment-img{
+  @include abs(0, 0);
+  @include square(100%);
+  z-index: 0;
+}
+
+.single-apartment-content{
+  @include d-flex($dir: column, $ai: center);
+  @include abs(0, 0);
+  @include rect(100%, 100vh);
+  padding: 30vh 60px 60px;
+  z-index: 1;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.7);
+  color: $white;
+  text-align: center;
+
+  & .page-title{
+    color: $white;
+    margin-bottom: 60px;
+  }
+
+  &__info{
+    @include d-flex($dir: column, $ai: center);
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    margin-bottom: 60px;
+
+    @include m-not-last(12px, b);
+  }
+
+  &__desc{
+    max-width: 700px;
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 60px;
+  }
+
+  &__gallery{
+    @include flex-row-3(8px);
+    max-width: 1200px;
+    margin-bottom: 60px;
+
+    &__img{
+      position: relative;
+      height: 320px;
+      display: block;
+      border-radius: 3px;
+      overflow: hidden;
+
+      &:hover{
+        & .single-apartment-content__gallery__img__hover{
+          opacity: 1;
+        }
+      }
+
+      & img{
+        @include img-cover;
+      }
+
+      &__hover{
+        @include d-flex($center: true);
+        @include square(100%);
+        @include abs(0, 0);
+        z-index: 1;
+        color: $white;
+        opacity: 0;
+        background: rgba(0, 0, 0, 0.7);
+        @include transition;
+      }
+    }
+  }
+}

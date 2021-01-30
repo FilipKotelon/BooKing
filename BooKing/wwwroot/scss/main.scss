@@ -1,6 +1,8 @@
 ﻿@import "node_modules/slick-carousel/slick/slick.scss";
 @import "node_modules/slick-carousel/slick/slick-theme.scss";
 
+@import "node_modules/lightgallery/src/sass/lightgallery.scss";
+
 @import "./utility/variables";
 @import "./utility/mixins/mixins-basic";
 @import "./utility/mixins/mixins-flex";
@@ -10,6 +12,9 @@
 @import "./base/base";
 @import "./base/typography";
 
+@import "./components/button";
+@import "./components/contact-form";
+
 @import "./layout/about-section";
 @import "./layout/apartments-grid";
 @import "./layout/container";
@@ -17,3 +22,4 @@
 @import "./layout/nav";
 
 @import "./pages/home";
+@import "./pages/single-apartment";

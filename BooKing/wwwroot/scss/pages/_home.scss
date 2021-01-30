@@ -1,4 +1,29 @@
 ﻿.home-apartments{
-  margin-top: 60px;
-  margin-bottom: 60px;
+  background-color: $red-dimmed;
+  color: #FFF;
+
+  &__head{
+    padding: 30px;
+    text-align: center;
+
+    & h2{
+      margin-bottom: 0;
+    }
+  }
+
+  &__carousel{
+    & .slick-slide{
+      margin: 0 4px;
+    }
+
+    & .apartments-grid__item{
+      &:focus{
+        outline: none !important;
+      }
+
+      &__img-con{
+        height: 500px;
+      }
+    }
+  }
 }

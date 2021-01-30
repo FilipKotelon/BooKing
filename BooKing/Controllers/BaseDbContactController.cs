@@ -68,7 +68,15 @@ namespace BooKing.Controllers
 
         protected UserMessageAdminDisplayModel UserMessageEntityToAdminDisplayModel(UserMessageEntity entity)
         {
-            var apartment = _dbContext.Apartments.First(a => a.Id == entity.ApartmentId);
+            ApartmentEntity apartment;
+
+            try
+            {
+                apartment = _dbContext.Apartments.First(a => a.Id == entity.ApartmentId);
+            } catch(System.InvalidOperationException error)
+            {
+                apartment = null;
+            }
 
             if (apartment != null)
             {

@@ -11,12 +11,6 @@
       border-radius: 3px;
       overflow: hidden;
       margin-bottom: 8px;
-
-      &:hover{
-        & .apartments-grid__item__hover{
-          top: 80%;
-        }
-      }
     }
 
     &__img{
@@ -29,30 +23,18 @@
       margin-bottom: 8px;
     }
 
-    &__hover{
-      @include abs(0, 100%);
-      @include d-flex($center: true);
-      @include rect(100%, 20%);
-      z-index: 0;
-      @include transition;
-      background-color: $gold;
-      color: $black;
-      font-weight: bold;
-
-      &:hover{
-        background-color: $black;
-        color: $white;
-      }
+    &__info{
+      @include d-flex($dir: column);
+      background: rgba(0, 0, 0, 0.9);
+      padding: 14px 24px;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      color: $white;
     }
 
     &__footer{
-      @include d-flex($jc: space-between, $ai: center);
-    }
-
-    &__info{
-      font-size: 14px;
-      line-height: 19px;
-      font-weight: 300;
+      @include d-flex($ai: center, $jc: space-between);
     }
   }
 }

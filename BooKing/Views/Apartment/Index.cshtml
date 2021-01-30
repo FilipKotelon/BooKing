@@ -4,45 +4,55 @@
 }
 
 <main>
-    <header class="hero-header">
+    <div class="single-apartment-con">
         @if (Model.Images != null && Model.Images.Count > 0)
         {
             string imgPath = "~/uploads/" + Model.Images[0].FileLocation;
 
-            <img src="@imgPath" alt="@Model.Name" class="hero-header__image" asp-append-version="true" />
+            <img src="@imgPath" alt="@Model.Name Photo" class="single-apartment-img" asp-append-version="true" />
         }
-        <div class="hero-header__content">
-            <h1 class="page-title royal-font">@Model.Name</h1>
-        </div>
-    </header>
+    <div class="single-apartment-content">
+        <h1 class="page-title royal-font">@Model.Name</h1>
 
-    <div class="apartment-content">
-        <div class="apartment-content__info">
-            <div class="apartment-content__info__location">
-                @Model.LocationName
+        <div class="single-apartment-content__info">
+            <div class="single-apartment-content__info__location">
+                Location: @Model.LocationName
             </div>
-            <div class="apartment-content__info__sleeps">
+            <div class="single-apartment-content__info__sleeps">
                 Amount of sleeps: @Model.Sleeps
             </div>
         </div>
-        <div class="apartment-content__desc">
+        <div class="single-apartment-content__desc">
             @Model.Description
         </div>
 
         @if (Model.Images != null && Model.Images.Count > 0)
         {
-            <div class="apartment-content__gallery">
+            <div class="single-apartment-content__gallery my-lightgallery">
+                @foreach (ImageModel img in Model.Images)
+                {
+                    string imgLink = "/uploads/" + img.FileLocation;
+                    string imgPath = "~" + imgLink;
 
+                    <a href="@imgLink" class="single-apartment-content__gallery__img">
+                        <img src="@imgPath" alt="@Model.Name Photo" asp-append-version="true" />
+                        <div class="single-apartment-content__gallery__img__hover">
+                            View
+                        </div>
+                    </a>
+                }
             </div>
-        } else
+        }
+        else
         {
-            <div class="apartment-content__gallery-msg">
+            <div class="single-apartment-content__gallery-msg">
                 No images added for this apartment yet. Contact us to get information about it!
             </div>
         }
-    </div>
 
-    <vc:apartment-contact-form apartment-id="@Model.Id" />
+        <vc:apartment-contact-form apartment-id="@Model.Id" />
+    </div>
+    </div>
 </main>
 
 <div class="separator"></div>
