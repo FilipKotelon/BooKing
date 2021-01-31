@@ -1,7 +1,7 @@
 import buildLibraryImg from "./buildLibraryImg";
 import { adminImageModalEl, boundInput } from "./imageModal.main";
 
-let imagesLoaded = false;
+export let imagesLoaded = false;
 
 const imageLibrary = () => {
   const libraryTab = document.getElementById('open-admin-modal-library');

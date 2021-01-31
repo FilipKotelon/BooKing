@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { imagesLoaded } from './imageLibrary';
 
 const imageUpload = () => {
   const form = document.getElementById('admin-modal-upload');
@@ -33,12 +34,14 @@ const imageUpload = () => {
           }
           
           overlayMsg.innerText = data.message;
+          imagesLoaded = false;
         },
         error: (e) => {
           overlay.classList.remove('success');
           overlay.classList.add('failed');
           
           overlayMsg.innerText = 'An error occured! Please try again later!';
+          imagesLoaded = false;
         }
       }
     );
