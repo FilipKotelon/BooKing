@@ -12,7 +12,8 @@
     @if(Model.ApartmentTitle != null)
     {
         <div class="single-message__apartment">
-            <p>Apartment: @Model.ApartmentTitle</p>
+            <h3>Apartment:</h3>
+            <p>@Model.ApartmentTitle</p>
             <a href="@Url.Action("Index", "Apartment", new { Area = "", id = Model.ApartmentId })">View apartment</a>
         </div>
     }

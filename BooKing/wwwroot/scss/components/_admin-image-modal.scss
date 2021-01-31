@@ -12,6 +12,19 @@
     pointer-events: all;
   }
 
+  &:not(.open){
+    & *{
+      pointer-events: none !important;
+    }
+  }
+
+  &__close{
+    text-align: right;
+    color: $white;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
   &__bg{
     @include abs(0, 0);
     @include square(100%);

@@ -106,6 +106,13 @@ p, h1, h2, h3, h4, h5, h6 {
   .admin-image-modal.open {
     opacity: 1;
     pointer-events: all; }
+  .admin-image-modal:not(.open) * {
+    pointer-events: none !important; }
+  .admin-image-modal__close {
+    text-align: right;
+    color: #FFF;
+    cursor: pointer;
+    margin-bottom: 10px; }
   .admin-image-modal__bg {
     position: absolute;
     left: 0;
