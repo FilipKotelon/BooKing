@@ -1,0 +1,100 @@
+.admin-image-modal{
+  @include fix(0, 0);
+  @include square(100%);
+  @include d-flex($center: true);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  @include transition;
+
+  &.open{
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__bg{
+    @include abs(0, 0);
+    @include square(100%);
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  &__content{
+    @include d-flex($dir: column);
+    width: 1200px;
+    max-width: 100%;
+    position: relative;
+    z-index: 1;
+    border-radius: 15px;
+  }
+
+  &__nav{
+    @include d-flex();
+
+    &__item{
+      @include d-flex($center: true);
+      width: 50%;
+      padding: 15px;
+      background-color: $grey-6;
+      cursor: pointer;
+
+      &.active{
+        background-color: $white;
+      }
+    }
+  }
+
+  &__tabs{
+    height: 600px;
+    position: relative;
+  }
+
+  &__tab{
+    @include abs(0, 0);
+    @include square(100%);
+    opacity: 0;
+    pointer-events: none;
+    background-color: $white-dimmed;
+    @include transition;
+    
+    &.loading-modal-con{
+      border-radius: 0;
+    
+      & .loading-modal{
+        border-radius: 0;
+      }
+    }
+
+    &.active{
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.upload-files{
+  @include d-flex($dir: column, $center: true);
+  @include m-not-last(16px, b);
+}
+
+.library-image-grid{
+  @include flex-row-6(14px);     
+  padding: 16px;
+  overflow: auto;
+}
+
+.library-image{
+  height: 160px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  padding: 2px;
+  @include transition;
+
+  &.checked{
+    border-color: $black;
+  }
+
+  & img{
+    @include img-cover;
+  }
+}

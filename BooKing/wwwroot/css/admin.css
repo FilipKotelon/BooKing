@@ -78,7 +78,7 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 540px;
     max-width: 100%;
     margin-bottom: 30px; }
-    .admin-apartment-form .form-group input, .admin-apartment-form .form-group textarea {
+    .admin-apartment-form .form-group input, .admin-apartment-form .form-group textarea, .admin-apartment-form .form-group .dense-btn {
       border: 1px solid #000000;
       border-radius: 3px;
       height: 42px;
@@ -89,6 +89,108 @@ p, h1, h2, h3, h4, h5, h6 {
       padding: 8px 14px; }
     .admin-apartment-form .form-group textarea {
       height: 260px; }
+
+.admin-image-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  transition: all .3s; }
+  .admin-image-modal.open {
+    opacity: 1;
+    pointer-events: all; }
+  .admin-image-modal__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.7); }
+  .admin-image-modal__content {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    max-width: 100%;
+    position: relative;
+    z-index: 1;
+    border-radius: 15px; }
+  .admin-image-modal__nav {
+    display: flex; }
+    .admin-image-modal__nav__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      padding: 15px;
+      background-color: #B8C2CC;
+      cursor: pointer; }
+      .admin-image-modal__nav__item.active {
+        background-color: #FFF; }
+  .admin-image-modal__tabs {
+    height: 600px;
+    position: relative; }
+  .admin-image-modal__tab {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background-color: #f5f5f5;
+    transition: all .3s; }
+    .admin-image-modal__tab.loading-modal-con {
+      border-radius: 0; }
+      .admin-image-modal__tab.loading-modal-con .loading-modal {
+        border-radius: 0; }
+    .admin-image-modal__tab.active {
+      opacity: 1;
+      pointer-events: all; }
+
+.upload-files {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+  .upload-files > :not(:last-child) {
+    margin-bottom: 16px; }
+
+.library-image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px;
+  overflow: auto; }
+  .library-image-grid > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(100% / 6 - 5 / 6 * 14px);
+    margin-bottom: 14px; }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      .library-image-grid > * {
+        flex-basis: calc(100% / 6 - 2.2 * 14px); } }
+    .library-image-grid > *:not(:nth-child(6n)) {
+      margin-right: 14px; }
+
+.library-image {
+  height: 160px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  padding: 2px;
+  transition: all .3s; }
+  .library-image.checked {
+    border-color: #000000; }
+  .library-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
 
 .btn, .dense-btn, .btn--white {
   display: flex;
@@ -134,12 +236,14 @@ p, h1, h2, h3, h4, h5, h6 {
   color: #FFF;
   z-index: 1;
   font-weight: bold;
-  border-radius: 3px;
+  border-radius: 15px;
   opacity: 0;
   pointer-events: none;
   padding: 30px;
   text-align: center;
   transition: all .3s; }
+  .loading-modal > :not(:last-child) {
+    margin-bottom: 16px; }
   .loading-modal.open {
     opacity: 1;
     pointer-events: all; }
@@ -149,7 +253,7 @@ p, h1, h2, h3, h4, h5, h6 {
     background-color: #688E26; }
   .loading-modal-con {
     position: relative;
-    border-radius: 3px; }
+    border-radius: 15px; }
 
 .admin-apartments-list {
   display: flex;

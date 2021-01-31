@@ -1,8 +1,9 @@
 ﻿@model AdminImageModalModel
 
 <div class="admin-image-modal" data-for="@Model.InputId" data-image-ids="@Model.ApartmentImageIdsAsString" id="admin-image-modal">
+    <div class="admin-image-modal__bg admin-image-modal-closer"></div>
     <div class="admin-image-modal__content">
-        <div class="admin-image-modal__close" id="admin-image-modal-closer"></div>
+        <div class="admin-image-modal__close admin-image-modal-closer">Close</div>
         <div class="admin-image-modal__nav">
             <div class="admin-image-modal__nav__item active" data-for="admin-modal-upload">
                 Add new files
@@ -11,20 +12,17 @@
                 Select from uploaded files
             </div>
         </div>
-        <div class="admin-image-modal__close">
-
-        </div>
         <div class="admin-image-modal__tabs">
-            <form enctype="multipart/form-data" method="POST" class="admin-image-modal__tab upload-files active" id="admin-modal-upload">
+            <form enctype="multipart/form-data" method="POST" class="admin-image-modal__tab upload-files loading-modal-con active" id="admin-modal-upload">
                 <input type="file" multiple placeholder="Choose files" id="admin-modal-upload-input" accept="image/*" />
-                <button type="submit" class="dense-btn">Upload images</button>
-                <div class="upload-files__overlay" id="admin-modal-upload-overlay">
-                    <div class="upload-files__overlay__status" id="admin-modal-upload-status">
-
-                    </div>
-                    <div class="upload-files__overlay__msg" id="admin-modal-upload-msg">
+                <button type="submit" class="btn">Save images</button>
+                <div class="loading-modal" id="admin-modal-upload-overlay">
+                    <div class="loading-modal__msg" id="admin-modal-upload-msg">
                         Uploading your files, don't close the window...
                     </div>
+                    <button type="button" class="loading-modal__btn btn--white" id="admin-modal-upload-btn">
+                        Close
+                    </button>
                 </div>
             </form>
             <div class="admin-image-modal__tab library-image-grid" id="admin-modal-library">

@@ -21,16 +21,27 @@ namespace BooKing.Controllers
 
         public IActionResult Index(int id)
         {
-            var apartmentEntity = _dbContext.Apartments.First(apartment => apartment.Id == id);
-            var apartment = ApartmentEntityToModel(apartmentEntity);
+            try
+            {
+                var apartmentEntity = _dbContext.Apartments.First(apartment => apartment.Id == id);
+                var apartment = ApartmentEntityToModel(apartmentEntity);
 
-            return View(apartment);
+                return View(apartment);
+            } catch(InvalidOperationException exception)
+            {
+                return View("NotFound");
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult NotFound()
+        {
+            return View();
         }
     }
 }

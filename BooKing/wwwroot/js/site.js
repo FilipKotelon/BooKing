@@ -51,13 +51,11 @@ var contactForm = function contactForm() {
                 type: "POST",
                 success: function success(data) {
                   msg.innerText = data.message;
-                  loadingScreen.classList.remove('loading');
                   loadingScreen.classList.remove('failed');
                   loadingScreen.classList.add('success');
                 },
                 error: function error(e) {
                   msg.innerText = 'An error has occured while sending the message! Please try again later or contact us by phone: +48 000 111 222.';
-                  loadingScreen.classList.remove('loading');
                   loadingScreen.classList.remove('success');
                   loadingScreen.classList.add('failed');
                 }

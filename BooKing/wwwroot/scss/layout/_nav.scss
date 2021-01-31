@@ -62,6 +62,12 @@
     position: relative;
     z-index: 10000;
 
+    &.open{
+      & span{
+        background-color: $gold;
+      }
+    }
+
     & span{
       @include rect(100%, 4px);
       border-radius: 1px;
@@ -75,7 +81,7 @@
     @include rect(255px, 100%);
     @include d-flex($dir: column);
     background-color: $white;
-    padding: 30px 15px;
+    padding: 50px 15px;
     @include transition;
     z-index: 5000;
     box-shadow: 4px 0px 12px rgba(0, 0, 0, 0.18);
@@ -86,8 +92,11 @@
 
     &__links{
       @include d-flex($dir: column, $ai: center);
+      @include m-not-last(16px, b);
 
       & a{
+        font-size: 18px;
+        font-weight: 500;
         color: $black;
       }
     }

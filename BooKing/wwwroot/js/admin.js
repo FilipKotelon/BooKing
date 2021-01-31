@@ -330,16 +330,18 @@ var imageLibrary = function imageLibrary() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "adminImageModalEl": () => /* binding */ adminImageModalEl,
-/* harmony export */   "adminImageModalCloser": () => /* binding */ adminImageModalCloser,
 /* harmony export */   "boundInput": () => /* binding */ boundInput,
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _imageLibrary__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./imageLibrary */ "./wwwroot/js/admin/imageModal/imageLibrary.js");
 /* harmony import */ var _imageUpload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./imageUpload */ "./wwwroot/js/admin/imageModal/imageUpload.js");
+/* harmony import */ var _modalOpening__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modalOpening */ "./wwwroot/js/admin/imageModal/modalOpening.js");
+/* harmony import */ var _tabSwitch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabSwitch */ "./wwwroot/js/admin/imageModal/tabSwitch.js");
+
+
 
 
 var adminImageModalEl = document.getElementById('admin-image-modal');
-var adminImageModalCloser = document.getElementById('admin-image-modal-closer');
 var boundInput = null;
 
 if (adminImageModalEl) {
@@ -350,6 +352,8 @@ var imageModal = function imageModal() {
   if (!adminImageModalEl) return;
   (0,_imageUpload__WEBPACK_IMPORTED_MODULE_1__.default)();
   (0,_imageLibrary__WEBPACK_IMPORTED_MODULE_0__.default)();
+  (0,_modalOpening__WEBPACK_IMPORTED_MODULE_2__.default)();
+  (0,_tabSwitch__WEBPACK_IMPORTED_MODULE_3__.default)();
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (imageModal);
@@ -379,8 +383,8 @@ var imageUpload = function imageUpload() {
   var form = document.getElementById('admin-modal-upload');
   var input = document.getElementById('admin-modal-upload-input');
   var overlay = document.getElementById('admin-modal-upload-overlay');
-  var overlayStatus = document.getElementById('admin-modal-upload-status');
   var overlayMsg = document.getElementById('admin-modal-upload-msg');
+  var overlayBtn = document.getElementById('admin-modal-upload-btn');
 
   var uploadImages = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -404,18 +408,20 @@ var imageUpload = function imageUpload() {
                 contentType: false,
                 type: "POST",
                 success: function success(data) {
-                  overlayStatus.classList.remove('loading');
-                  overlayStatus.classList.remove('failed');
-                  overlayStatus.classList.add('success');
-                  console.log(data);
+                  if (data.success) {
+                    overlay.classList.remove('failed');
+                    overlay.classList.add('success');
+                  } else {
+                    overlay.classList.remove('success');
+                    overlay.classList.add('failed');
+                  }
+
                   overlayMsg.innerText = data.message;
                 },
                 error: function error(e) {
-                  overlayStatus.classList.remove('loading');
-                  overlayStatus.classList.remove('success');
-                  overlayStatus.classList.add('failed');
-                  console.log(e);
-                  overlayMsg.innerText = data.message;
+                  overlay.classList.remove('success');
+                  overlay.classList.add('failed');
+                  overlayMsg.innerText = 'An error occured! Please try again later!';
                 }
               });
 
@@ -436,9 +442,91 @@ var imageUpload = function imageUpload() {
     e.preventDefault();
     uploadImages();
   });
+  overlayBtn.addEventListener('click', function () {
+    overlay.classList.remove('open');
+  });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (imageUpload);
+
+/***/ }),
+
+/***/ "./wwwroot/js/admin/imageModal/modalOpening.js":
+/*!*****************************************************!*\
+  !*** ./wwwroot/js/admin/imageModal/modalOpening.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _imageModal_main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./imageModal.main */ "./wwwroot/js/admin/imageModal/imageModal.main.js");
+
+
+var modalOpening = function modalOpening() {
+  var opener = document.getElementById('admin-image-modal-opener');
+  var closers = document.querySelectorAll('.admin-image-modal-closer');
+  opener.addEventListener('click', function () {
+    _imageModal_main__WEBPACK_IMPORTED_MODULE_0__.adminImageModalEl.classList.add('open');
+  });
+  closers.forEach(function (closer) {
+    closer.addEventListener('click', function () {
+      _imageModal_main__WEBPACK_IMPORTED_MODULE_0__.adminImageModalEl.classList.remove('open');
+    });
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modalOpening);
+
+/***/ }),
+
+/***/ "./wwwroot/js/admin/imageModal/tabSwitch.js":
+/*!**************************************************!*\
+  !*** ./wwwroot/js/admin/imageModal/tabSwitch.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _imageModal_main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./imageModal.main */ "./wwwroot/js/admin/imageModal/imageModal.main.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+var tabSwitch = function tabSwitch() {
+  var navItems = _imageModal_main__WEBPACK_IMPORTED_MODULE_0__.adminImageModalEl.querySelectorAll('.admin-image-modal__nav__item');
+  var tabs = _imageModal_main__WEBPACK_IMPORTED_MODULE_0__.adminImageModalEl.querySelectorAll('.admin-image-modal__tab');
+  navItems.forEach(function (theItem) {
+    var theTab = document.getElementById(theItem.dataset["for"]);
+
+    if (theTab) {
+      theItem.addEventListener('click', function () {
+        [].concat(_toConsumableArray(tabs), _toConsumableArray(navItems)).forEach(function (item) {
+          item.classList.remove('active');
+        });
+        theTab.classList.add('active');
+        theItem.classList.add('active');
+      });
+    }
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tabSwitch);
 
 /***/ }),
 

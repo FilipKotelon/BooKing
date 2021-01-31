@@ -16,7 +16,7 @@
     max-width: 100%;
     margin-bottom: 30px;
 
-    & input, textarea{
+    & input, textarea, & .dense-btn{
       border: 1px solid $black;
       border-radius: 3px;
       height: 42px;

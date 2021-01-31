@@ -4,8 +4,8 @@ const imageUpload = () => {
   const form = document.getElementById('admin-modal-upload');
   const input = document.getElementById('admin-modal-upload-input');
   const overlay = document.getElementById('admin-modal-upload-overlay');
-  const overlayStatus = document.getElementById('admin-modal-upload-status');
   const overlayMsg = document.getElementById('admin-modal-upload-msg');
+  const overlayBtn = document.getElementById('admin-modal-upload-btn');
 
   const uploadImages = async () => {
     const formData = new FormData();
@@ -24,20 +24,21 @@ const imageUpload = () => {
         contentType: false,
         type: "POST",
         success: (data) => {
-          overlayStatus.classList.remove('loading');
-          overlayStatus.classList.remove('failed');
-          overlayStatus.classList.add('success');
-          console.log(data);
+          if(data.success){
+            overlay.classList.remove('failed');
+            overlay.classList.add('success');
+          } else {
+            overlay.classList.remove('success');
+            overlay.classList.add('failed');
+          }
           
           overlayMsg.innerText = data.message;
         },
         error: (e) => {
-          overlayStatus.classList.remove('loading');
-          overlayStatus.classList.remove('success');
-          overlayStatus.classList.add('failed');
-          console.log(e);
+          overlay.classList.remove('success');
+          overlay.classList.add('failed');
           
-          overlayMsg.innerText = data.message;
+          overlayMsg.innerText = 'An error occured! Please try again later!';
         }
       }
     );
@@ -47,6 +48,10 @@ const imageUpload = () => {
     e.preventDefault();
     uploadImages();
   });
+
+  overlayBtn.addEventListener('click', () => {
+    overlay.classList.remove('open');
+  })
 }
 
 export default imageUpload;

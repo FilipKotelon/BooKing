@@ -1,8 +1,9 @@
 import imageLibrary from "./imageLibrary";
 import imageUpload from "./imageUpload";
+import modalOpening from "./modalOpening";
+import tabSwitch from "./tabSwitch";
 
 export const adminImageModalEl = document.getElementById('admin-image-modal');
-export const adminImageModalCloser = document.getElementById('admin-image-modal-closer');
 export let boundInput = null;
 
 if(adminImageModalEl){
@@ -14,6 +15,8 @@ const imageModal = () => {
 
   imageUpload();
   imageLibrary();
+  modalOpening();
+  tabSwitch();
 }
 
 export default imageModal;

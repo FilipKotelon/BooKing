@@ -31,10 +31,21 @@ namespace BooKing.Areas.Admin.Controllers
 
         public IActionResult Edit(int id)
         {
-            var apartmentEntity = _dbContext.Apartments.First(apartment => apartment.Id == id);
-            var apartment = ApartmentEntityToSaveModel(apartmentEntity);
+            try
+            {
+                var apartmentEntity = _dbContext.Apartments.First(apartment => apartment.Id == id);
+                var apartment = ApartmentEntityToSaveModel(apartmentEntity);
 
-            return View(apartment);
+                return View(apartment);
+            } catch(InvalidOperationException exception)
+            {
+                return View("NotFound");
+            }
+        }
+
+        public IActionResult NotFound()
+        {
+            return View();
         }
     }
 }

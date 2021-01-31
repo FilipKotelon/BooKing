@@ -65,13 +65,15 @@ namespace BooKing.Areas.Admin.Controllers
                 return new ImageResponseModel
                 {
                     Images = imageModels,
-                    Message = "Images uploaded successfully!"
+                    Message = "Images uploaded successfully!",
+                    Success = true
                 };
             } else {
                 return new ImageResponseModel
                 {
                     Images = new List<ImageModel>(),
-                    Message = "No images uploaded!"
+                    Message = "No images uploaded!",
+                    Success = false
                 };
             }
         }

@@ -20,17 +20,29 @@ namespace BooKing.Areas.Admin.Controllers
 
         public IActionResult Index(int id)
         {
-            var messageEntity = _dbContext.UserMessages.First(msg => msg.Id == id);
-
-            if (messageEntity != null)
+            try
             {
-                var msg = UserMessageEntityToAdminDisplayModel(messageEntity);
+                var messageEntity = _dbContext.UserMessages.First(msg => msg.Id == id);
 
-                return View(msg);
-            } else
+                if (messageEntity != null)
+                {
+                    var msg = UserMessageEntityToAdminDisplayModel(messageEntity);
+
+                    return View(msg);
+                }
+                else
+                {
+                    return View("NotFound");
+                }
+            } catch(InvalidOperationException exception)
             {
-                return View();
+                return View("NotFound");
             }
+        }
+
+        public IActionResult NotFound()
+        {
+            return View();
         }
     }
 }
