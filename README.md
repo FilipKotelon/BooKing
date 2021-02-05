@@ -31,3 +31,24 @@ Następnie w Visual Studio należy otworzyć okno "SQL Server Object Explorer" i
 W drzewku, trzeva rozwinąć nowo dodaną instancję "booking", kliknąć prawym przyciskiem myszy na "Databases", wybrać "Add New Database" i nazwać bazę danych "booking".
 
 ### 3. Aktualizacja schematu bazy danych
+W wierszu poleceń otwartym w katalogu zawierającym plik .csproj należy wpisać kolejno te komendy:
+```
+dotnet tool install --global dotnet-ef
+dotnet ef migrations add Initial
+dotnet ef database update
+```
+
+Po wykonaniu tych czynności projekt jest gotowy do użytkowania.
+
+## Opcjonalnie: edycja plików js i scss
+Aby edytować pliki js oraz scss należy w 3 osobnych oknach wiersza poleceń (otwartego w katalogu zawierającym plik .csproj) wykonać 3 osobne komendy:
+```
+//Do kompilowania głównych styli
+nmp run compile:sass
+//Do kompilowania styli panelu administracyjnego
+npm run compile-admin:sass
+//Do przetwarzania js na wersję działającą we wszystkich wspieranych przeglądarkach
+npm run dev
+```
+Pliki wwwroot/js/admin.js oraz wwwroot/js/site.js nie powinny być ręcznie edytowane - są docelowymi plikami z przetworzonym kodem. Zamiast tego należy edytować pliki znajdujące się w folderach odpowiadających im nazwom.
+Podobnie jest z plikami css - wwwroot/css/admin.css oraz wwwroot/css/style.css. Aby edytować style, należy edytować je w plikach scss.
